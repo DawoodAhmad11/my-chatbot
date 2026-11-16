@@ -3,8 +3,8 @@ import random
 import re
 import datetime
 
-st.set_page_config(page_title="Dawood AI PRO MAX", page_icon="🤖")
-st.title("🤖 Dawood AI PRO MAX")
+st.set_page_config(page_title="My Chatbot", page_icon="🤖")
+st.title("🤖My Chatbot")
 st.caption("Offline Smart Chatbot | No API Required | Made by Dawood")
 
 if "messages" not in st.session_state:
@@ -62,7 +62,7 @@ def get_reply(user_input):
     if text in ["hi", "hello", "salam", "aoa", "assalam o alaikum"]:
         if name:
             return f"Assalam-o-Alaikum {name}! Kaise ho? 😊 'help' likho."
-        return "Assalam-o-Alaikum! Kaise ho? 😊 Apna naam batao, jese 'mera naam Dawood hai'"
+        return "Assalam-o-Alaikum! Kaise ho? 😊 Apna naam batao, jese 'mera naam ali hai'"
 
     if text in ["fine", "theek", "acha hun"]:
         return "MashAllah! Bohat acha! 😊 Ab 'joke' ya 'quiz' likho."
@@ -112,11 +112,11 @@ def get_reply(user_input):
 
     if text == "dawood":
         st.session_state.name = "Dawood"
-        return "Dawood! Mera malik! 🔥 Hukum karo!"
+        return "Han ji! 🔥 Bolo kya help karo!"
     if "bye" in text or "allah hafiz" in text:
         return "Allah Hafiz! 👋 Phir milenge."
     if "kaun ho" in text or "tum kaun" in text:
-        return "Main Dawood AI PRO MAX hun! 🤖 Dawood ne mujhe banaya hai."
+        return "Main My Chatbot hun! 🤖 Main aapka dost hun."
     return "Samajh nahi aaya. 'help' likho 😊"
 
 col1, col2, col3 = st.columns(3)
@@ -139,7 +139,7 @@ with col3:
 st.divider()
 for m in st.session_state.messages:
     with st.chat_message(m["role"]):
-        st.write(m["content"])
+        st.write(m.get("content",m.get("text","")))
 
 prompt = st.chat_input("Yahan likhein...")
 if prompt:
