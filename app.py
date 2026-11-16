@@ -85,7 +85,7 @@ def get_reply(user_input):
     if text == "clear":
         st.session_state.messages = []
         return "Chat saaf kar di! ✨"
-            if text.startswith("calc"):
+    if text.startswith("calc"):
         try:
             expr = user_input[4:].strip().replace("x", "*")
             return f"🧮 {expr} = {eval(expr)}"
